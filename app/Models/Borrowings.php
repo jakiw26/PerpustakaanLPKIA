@@ -8,6 +8,7 @@ class Borrowings extends Model
 {
     protected $table = 'borrowings';
     protected $fillable = [
+        'id',
         'member_id',
         'user_id',
         'borrow_date',

@@ -75,9 +75,9 @@
         <div class="card border-0 shadow-lg rounded-4">
             <div class="card-header bg-primary text-white rounded-top-4 border-0 py-3">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0 fw-bold"> Data Details Borrowings </h3> <button
+                    <h3 class="mb-0 fw-bold"> Data Returns </h3> <button
                         class="btn btn-light text-primary fw-semibold rounded-pill px-4" data-bs-toggle="modal"
-                        data-bs-target="#tambahBorrowingModal"> + Tambah Data </button>
+                        data-bs-target="#tambahReturnsModal"> + Tambah Data </button>
                 </div>
             </div>
             <div class="card-body p-4">
@@ -87,26 +87,26 @@
                             <tr>
                                 <th>No</th>
                                 <th>Borrowing_id</th>
-                                <th>Book_id</th>
-                                <th>QTY</th>
+                                <th>Return Date</th>
+                                <th>Late Days</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($borrowings as $borrowing)
+                                @foreach ($returns as $return)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $borrowing->borrowing_id }}</td>
-                                        <td>{{ $borrowing->book_id }}</td>
-                                        <td>{{ $borrowing->qty }}</td>
+                                        <td>{{ $return->borrowing_id }}</td>
+                                        <td>{{ $return->return_date }}</td>
+                                        <td>{{ $return->late_days }}</td>
 
                                         <td>
                                             <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editModal{{ $borrowing->id }}">
+                                                data-bs-target="#editModal{{ $return->id }}">
                                                 Edit
                                             </button>
 
-                                            <form action="/borrowingsdetails/delete/{{ $borrowing->id }}" method="POST"
+                                            <form action="/returns/delete/{{ $return->id }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -126,18 +126,18 @@
     </div>
 
     <!-- Modal Tambah Data -->
-    <div class="modal fade" id="tambahBorrowingModal" tabindex="-1">
+    <div class="modal fade" id="tambahReturnsModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content border-0 rounded-4 shadow">
                 <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title fw-bold">
-                        Add Borrowing
+                        Add Returns
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
 
                 <div class="modal-body p-4">
-                    <form action="/borrowingsdetails/store" method="POST">
+                    <form action="/returns/store" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
@@ -149,17 +149,17 @@
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                               Book ID
+                               Return Date
                             </label>
-                            <input type="number" name="book_id" class="form-control" placeholder="Masukkan Book ID"
+                            <input type="date" name="return_date" class="form-control" placeholder="Masukkan return date"
                                 required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                QTY
+                                Late Days
                             </label>
-                            <input type="number" name="qty" class="form-control" required>
+                            <input type="int" name="late_days" class="form-control" required>
                         </div>
 
                         <div class="text-end">
@@ -176,8 +176,8 @@
         </div>
     </div>
 
-    @foreach ($borrowings as $borrowing)
-        <div class="modal fade" id="editModal{{ $borrowing->id }}" tabindex="-1">
+    @foreach ($returns as $return)
+        <div class="modal fade" id="editModal{{ $return->id }}" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 rounded-4 shadow">
                     <div class="modal-header bg-primary text-white">
@@ -189,7 +189,7 @@
                     </div>
 
                     <div class="modal-body p-4">
-                        <form action="/borrowingsdetails/update/{{ $borrowing->id }}" method="POST">
+                        <form action="/returns/update/{{ $return->id }}" method="POST">
                             @csrf
                             @method('PUT')
 
@@ -198,23 +198,23 @@
                                     Borrowing ID
                                 </label>
                                 <input type="number" name="borrowing_id" class="form-control"
-                                    value="{{ $borrowing->borrowing_id }}" required>
+                                    value="{{ $return->borrowing_id }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Book ID
+                                    Return Date
                                 </label>
-                                <input type="number" name="book_id" class="form-control"
-                                    value="{{ $borrowing->book_id }}" required>
+                                <input type="date" name="return_date" class="form-control"
+                                    value="{{ $return->return_date }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    qty
+                                    Late Days
                                 </label>
-                                <input type="number" name="qty" class="form-control"
-                                    value="{{ $borrowing->qty }}" required>
+                                <input type="int" name="late_days" class="form-control"
+                                    value="{{ $return->late_days }}" required>
                             </div>
 
                             <div class="text-end">

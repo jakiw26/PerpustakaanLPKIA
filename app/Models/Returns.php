@@ -4,14 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BorrowingsDetails extends Model
+class Returns extends Model
 {
-    protected $table = 'borrowing_details';
+    protected $table = 'returns';
     protected $fillable = [
         'id',
         'borrowing_id',
-        'book_id',
-        'qty',
+        'return_date',
+        'late_days',
     ];
-
 }

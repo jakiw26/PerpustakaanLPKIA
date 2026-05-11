@@ -63,7 +63,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Returns</a>
+                        <a class="nav-link" href="/returns">Returns</a>
                     </li>
 
                 </ul>
