@@ -22,23 +22,46 @@
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
+
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link" href="#">Users</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tentang</a>
+                        <a class="nav-link" href="#">Members</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Gallery</a>
+                        <a class="nav-link" href="#">Books</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Kontak</a>
+                        <a class="nav-link" href="#">Categories</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Authors</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Publishers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/borrowings">Borrowings</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/borrowingsdetails">Borrowings Details</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Returns</a>
+                    </li>
+
                 </ul>
             </div>
+
         </div>
     </nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

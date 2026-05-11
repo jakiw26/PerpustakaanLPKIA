@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -10,4 +11,10 @@ class LandingPageController extends Controller
     {
         return view('index');
     }
+
+    public function admin()
+    {
+        return view('admin.index');
+    }
+    
 }
