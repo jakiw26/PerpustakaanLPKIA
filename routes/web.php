@@ -5,6 +5,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\BorrowingsController;
 use App\Http\Controllers\BorrowingsDetailsController;
 use App\Http\Controllers\ReturnsController;
+use App\Http\Controllers\UserController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -32,3 +33,9 @@ Route::get('/returns', [ReturnsController::class, 'index']);
 Route::post('/returns/store', [ReturnsController::class, 'store']);
 Route::put('/returns/update/{id}', [ReturnsController::class, 'update']);
 Route::delete('/returns/delete/{id}', [ReturnsController::class, 'destroy']);
+
+//User
+Route::get('/User', [UserController::class, 'index']);
+Route::post('/User/store', [UserController::class, 'store']);
+Route::put('/returns/update/{id}', [UserController::class, 'update']);
+Route::delete('/returns/delete/{id}', [UserController::class, 'delete']);
