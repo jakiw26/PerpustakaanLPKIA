@@ -22,3 +22,6 @@ Route::delete('/borrowings/delete/{id}', [BorrowingsController::class, 'destroy'
 
 //borrowings detail
 Route::get('/borrowingsdetails', [BorrowingsDetailsController::class, 'index']);
+Route::post('/borrowingsdetails/store', [BorrowingsDetailsController::class, 'store']);
+Route::put('/borrowingsdetails/update/{id}', [BorrowingsDetailsController::class, 'update']);
+Route::delete('/borrowingsdetails/delete/{id}', [BorrowingsDetailsController::class, 'destroy']);

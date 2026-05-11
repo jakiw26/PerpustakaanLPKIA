@@ -86,7 +86,7 @@
                         <table class="table table-striped">
                             <tr>
                                 <th>No</th>
-                                <th>Browing_id</th>
+                                <th>Borrowing_id</th>
                                 <th>Book_id</th>
                                 <th>QTY</th>
                                 <th>Action</th>
@@ -96,7 +96,7 @@
                                 @foreach ($borrowings as $borrowing)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $borrowing->browing_id }}</td>
+                                        <td>{{ $borrowing->borrowing_id }}</td>
                                         <td>{{ $borrowing->book_id }}</td>
                                         <td>{{ $borrowing->qty }}</td>
 
@@ -106,7 +106,7 @@
                                                 Edit
                                             </button>
 
-                                            {{-- <form action="/borrowings/delete/{{ $borrowing->id }}" method="POST"
+                                            <form action="/borrowingsdetails/delete/{{ $borrowing->id }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -114,7 +114,7 @@
                                                     onclick="return confirm('Yakin ingin menghapus data ini?')">
                                                     Hapus
                                                 </button>
-                                            </form> --}}
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -137,47 +137,29 @@
                 </div>
 
                 <div class="modal-body p-4">
-                    <form action="/borrowingsdetail/store" method="POST">
+                    <form action="/borrowingsdetails/store" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Member ID
+                                Borrowing ID
                             </label>
-                            <input type="number" name="member_id" class="form-control" placeholder="Masukkan Member ID"
+                            <input type="number" name="borrowing_id" class="form-control" placeholder="Masukkan Borrowing ID"
                                 required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                User ID
+                               Book ID
                             </label>
-                            <input type="number" name="user_id" class="form-control" placeholder="Masukkan User ID"
+                            <input type="number" name="book_id" class="form-control" placeholder="Masukkan Book ID"
                                 required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Borrowing Date
+                                QTY
                             </label>
-                            <input type="date" name="borrow_date" class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">
-                                Due Date
-                            </label>
-                            <input type="date" name="due_date" class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">
-                                Status
-                            </label>
-                            <select name="status" class="form-select" required>
-                                <option value="">-- Pilih Status --</option>
-                                <option value="Dipinjam">Dipinjam</option>
-                                <option value="Dikembalikan">Dikembalikan</option>
-                            </select>
+                            <input type="number" name="qty" class="form-control" required>
                         </div>
 
                         <div class="text-end">
@@ -194,68 +176,45 @@
         </div>
     </div>
 
-    {{-- @foreach ($borrowings as $borrowing)
+    @foreach ($borrowings as $borrowing)
         <div class="modal fade" id="editModal{{ $borrowing->id }}" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 rounded-4 shadow">
                     <div class="modal-header bg-primary text-white">
                         <h5 class="modal-title fw-bold">
-                            Edit Borrowing
+                            Edit Borrowing Details
                         </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal">
                         </button>
                     </div>
 
                     <div class="modal-body p-4">
-                        <form action="/borrowings/update/{{ $borrowing->id }}" method="POST">
+                        <form action="/borrowingsdetails/update/{{ $borrowing->id }}" method="POST">
                             @csrf
                             @method('PUT')
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Member ID
+                                    Borrowing ID
                                 </label>
-                                <input type="number" name="member_id" class="form-control"
-                                    value="{{ $borrowing->member_id }}" required>
+                                <input type="number" name="borrowing_id" class="form-control"
+                                    value="{{ $borrowing->borrowing_id }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    User ID
+                                    Book ID
                                 </label>
-                                <input type="number" name="user_id" class="form-control"
-                                    value="{{ $borrowing->user_id }}" required>
+                                <input type="number" name="book_id" class="form-control"
+                                    value="{{ $borrowing->book_id }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Borrow Date
+                                    qty
                                 </label>
-                                <input type="date" name="borrow_date" class="form-control"
-                                    value="{{ $borrowing->borrow_date }}" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">
-                                    Due Date
-                                </label>
-                                <input type="date" name="due_date" class="form-control"
-                                    value="{{ $borrowing->due_date }}" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">
-                                    Status
-                                </label>
-                                <select name="status" class="form-select" required>
-                                    <option value="Dipinjam" {{ $borrowing->status == 'Dipinjam' ? 'selected' : '' }}>
-                                        Dipinjam
-                                    </option>
-                                    <option value="Dikembalikan"
-                                        {{ $borrowing->status == 'Dikembalikan' ? 'selected' : '' }}>
-                                        Dikembalikan
-                                    </option>
-                                </select>
+                                <input type="number" name="qty" class="form-control"
+                                    value="{{ $borrowing->qty }}" required>
                             </div>
 
                             <div class="text-end">
@@ -272,7 +231,7 @@
                 </div>
             </div>
         </div>
-    @endforeach --}}
+    @endforeach
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09cYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
