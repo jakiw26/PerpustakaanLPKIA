@@ -230,7 +230,7 @@
                         dengan ribuan koleksi buku modern dan fasilitas nyaman.
                     </p>
 
-                    <a href="/perpustakaan.index" class="btn btn-custom">
+                    <a href="/admin" class="btn btn-custom">
                         Jelajahi Sekarang
                     </a>
                 </div>

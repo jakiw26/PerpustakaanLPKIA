@@ -11,6 +11,6 @@ use App\Http\Controllers\LandingPageController;
 Route::get('/', [LandingPageController::class, 'index']);
 
 // a href di landing page
-Route::get('/perpustakaan.index', function () {
-    return view('perpustakaan.index');
+Route::get('/admin', function () {
+    return view('admin.index');
 });
