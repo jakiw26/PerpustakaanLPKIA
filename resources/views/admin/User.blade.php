@@ -86,20 +86,21 @@
                         <table class="table table-striped">
                             <tr>
                                 <th>No</th>
-                                <th>ID User</th>
                                 <th>Nama</th>
-                                <th>Kelas</th>
-                                <th>No HP</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Password</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                                 @foreach ($User as $User)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $User->User_id }}</td>
-                                        <td>{{ $User->nama }}</td>
-                                        <td>{{ $User->kelas }}</td>
-                                        <td>{{ $User->no_hp }}</td>
+                                        <td>{{ $User->name }}</td>
+                                        <td>{{ $User->email }}</td>
+                                        <td>{{ $User->role }}</td>
+                                        <td>{{ $User->password }}</td>
 
                                         <td>
                                             <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
@@ -142,31 +143,32 @@
                         @csrf
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                User ID
-                            </label>
-                            <input type="number" name="User_id" class="form-control" placeholder="Masukkan User ID"
-                                required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">
                                 Nama
                             </label>
-                            <input type="number" name="nama" class="form-control" placeholder="Masukkan Nama"
+                            <input type="text" name="name" class="form-control" placeholder="Masukkan Nama"
                                 required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Kelas
+                                Email
                             </label>
-                            <input type="number" name="kelas" class="form-control" placeholder="Masukan kelas" required>
+                            <input type="text" name="email" class="form-control" placeholder="Masukkan Email"
+                                required>
                         </div>
+
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                No Hp
+                                Role
                             </label>
-                            <input type="number" name="no_hp" class="form-control" placeholder="Masukan no hp" required>
+                            <input type="text" name="role" class="form-control" placeholder="Masukan Role" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Password
+                            </label>
+                            <input type="password" name="password" class="form-control" placeholder="Masukan Role" required>
                         </div>
 
                         <div class="text-end">
@@ -183,7 +185,7 @@
         </div>
     </div>
 
-    @foreach ($User as $User)
+    {{-- @foreach ($User as $User)
         <div class="modal fade" id="editModal{{ $User->id }}" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 rounded-4 shadow">
@@ -202,34 +204,34 @@
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    User ID
+                                    Nama
                                 </label>
-                                <input type="number" name="User_id" class="form-control"
+                                <input type="text" name="name" class="form-control"
                                     value="{{ $User->User_id }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Nama
+                                    Email
                                 </label>
-                                <input type="number" name="kelas" class="form-control"
+                                <input type="text" name="Email" class="form-control"
                                     value="{{ $User->kelas }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Kelas
+                                    Role
                                 </label>
-                                <input type="number" name="kelas" class="form-control"
+                                <input type="text" name="role" class="form-control"
                                     value="{{ $User->kelas }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    No HP
+                                    Role
                                 </label>
-                                <input type="number" name="no_hp" class="form-control"
-                                    value="{{ $User->no_hp }}" required>
+                                <input type="text" name="password" class="form-control"
+                                    value="{{ $User->kelas }}" required>
                             </div>
 
                             <div class="text-end">
@@ -246,7 +248,7 @@
                 </div>
             </div>
         </div>
-    @endforeach
+    @endforeach --}}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09cYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
