@@ -37,5 +37,5 @@ Route::delete('/returns/delete/{id}', [ReturnsController::class, 'destroy']);
 //User
 Route::get('/User', [UserController::class, 'index']);
 Route::post('/User/store', [UserController::class, 'store']);
-Route::put('/returns/update/{id}', [UserController::class, 'update']);
-Route::delete('/returns/delete/{id}', [UserController::class, 'delete']);
+Route::put('/User/update/{id}', [UserController::class, 'update']);
+Route::delete('/User/delete/{id}', [UserController::class, 'delete']);

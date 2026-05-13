@@ -94,7 +94,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($User as $User)
+                                @foreach ($Users as $User)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $User->name }}</td>
@@ -185,7 +185,7 @@
         </div>
     </div>
 
-    {{-- @foreach ($User as $User)
+    @foreach ($Users as $User)
         <div class="modal fade" id="editModal{{ $User->id }}" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 rounded-4 shadow">
@@ -207,15 +207,15 @@
                                     Nama
                                 </label>
                                 <input type="text" name="name" class="form-control"
-                                    value="{{ $User->User_id }}" required>
+                                    value="{{ $User->name }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
                                     Email
                                 </label>
-                                <input type="text" name="Email" class="form-control"
-                                    value="{{ $User->kelas }}" required>
+                                <input type="text" name="email" class="form-control"
+                                    value="{{ $User->email }}" required>
                             </div>
 
                             <div class="mb-3">
@@ -223,7 +223,7 @@
                                     Role
                                 </label>
                                 <input type="text" name="role" class="form-control"
-                                    value="{{ $User->kelas }}" required>
+                                    value="{{ $User->role }}" required>
                             </div>
 
                             <div class="mb-3">
@@ -231,7 +231,7 @@
                                     Role
                                 </label>
                                 <input type="text" name="password" class="form-control"
-                                    value="{{ $User->kelas }}" required>
+                                    value="{{ $User->password }}" required>
                             </div>
 
                             <div class="text-end">
@@ -248,7 +248,7 @@
                 </div>
             </div>
         </div>
-    @endforeach --}}
+    @endforeach
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09cYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
