@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class members extends Model
+{
+    protected $table = 'members';
+    protected $fillable = [
+        'id',
+        'name',
+        'nim',
+        'email',
+        'phone',
+        'address'
+    ];
+}

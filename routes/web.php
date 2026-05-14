@@ -6,6 +6,7 @@ use App\Http\Controllers\BorrowingsController;
 use App\Http\Controllers\BorrowingsDetailsController;
 use App\Http\Controllers\ReturnsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MembersController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -39,3 +40,9 @@ Route::get('/User', [UserController::class, 'index']);
 Route::post('/User/store', [UserController::class, 'store']);
 Route::put('/User/update/{id}', [UserController::class, 'update']);
 Route::delete('/User/delete/{id}', [UserController::class, 'delete']);
+
+//Members
+Route::get('/members', [MembersController::class, 'index']);
+Route::post('/members/store', [MembersController::class, 'store']);
+Route::put('/members/update/{id}', [MembersController::class, 'update']);
+Route::delete('/members/delete/{id}', [MembersController::class, 'delete']);

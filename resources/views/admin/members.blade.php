@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User</title>
+    <title>Members</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -27,11 +27,11 @@
                 <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
 
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold" href="/User">Users</a>
+                        <a class="nav-link " href="/User">Users</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/members">Members</a>
+                        <a class="nav-link active fw-bold" href="/members">Members</a>
                     </li>
 
                     <li class="nav-item">
@@ -87,28 +87,30 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
+                                <th>Nim</th>
                                 <th>Email</th>
-                                <th>Role</th>
-                                <th>Password</th>
+                                <th>Phone</th>
+                                <th>Address</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($Users as $User)
+                                @foreach ($members as $member)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $User->name }}</td>
-                                        <td>{{ $User->email }}</td>
-                                        <td>{{ $User->role }}</td>
-                                        <td>{{ $User->password }}</td>
+                                        <td>{{ $member->name }}</td>
+                                        <td>{{ $member->nim }}</td>
+                                        <td>{{ $member->email }}</td>
+                                        <td>{{ $member->phone }}</td>
+                                        <td>{{ $member->address }}</td>
 
                                         <td>
                                             <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editModal{{ $User->id }}">
+                                                data-bs-target="#editModal{{ $member->id }}">
                                                 Edit
                                             </button>
 
-                                            <form action="/User/delete/{{ $User->id }}" method="POST"
+                                            <form action="/members/delete/{{ $member->id }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -139,13 +141,21 @@
                 </div>
 
                 <div class="modal-body p-4">
-                    <form action="/User/store" method="POST">
+                    <form action="/members/store" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
                                 Nama
                             </label>
                             <input type="text" name="name" class="form-control" placeholder="Masukkan Nama"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Nim
+                            </label>
+                            <input type="number" name="nim" class="form-control" placeholder="Masukkan Nama"
                                 required>
                         </div>
 
@@ -159,16 +169,16 @@
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Role
+                                Phone
                             </label>
-                            <input type="text" name="role" class="form-control" placeholder="Masukan Role" required>
+                            <input type="number" name="phone" class="form-control" placeholder="Masukan Phone" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Password
+                                Address
                             </label>
-                            <input type="password" name="password" class="form-control" placeholder="Masukan Role" required>
+                            <input type="text" name="address" class="form-control" placeholder="Masukan Address" required>
                         </div>
 
                         <div class="text-end">
@@ -185,8 +195,8 @@
         </div>
     </div>
 
-    @foreach ($Users as $User)
-        <div class="modal fade" id="editModal{{ $User->id }}" tabindex="-1">
+    @foreach ($members as $member)
+        <div class="modal fade" id="editModal{{ $member->id }}" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 rounded-4 shadow">
                     <div class="modal-header bg-primary text-white">
@@ -198,7 +208,7 @@
                     </div>
 
                     <div class="modal-body p-4">
-                        <form action="/User/update/{{ $User->id }}" method="POST">
+                        <form action="/member/update/{{ $member->id }}" method="POST">
                             @csrf
                             @method('PUT')
 
@@ -207,7 +217,15 @@
                                     Nama
                                 </label>
                                 <input type="text" name="name" class="form-control"
-                                    value="{{ $User->name }}" required>
+                                    value="{{ $member->name }}" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">
+                                    Nim
+                                </label>
+                                <input type="number" name="nim" class="form-control"
+                                    value="{{ $member->nim }}" required>
                             </div>
 
                             <div class="mb-3">
@@ -215,23 +233,23 @@
                                     Email
                                 </label>
                                 <input type="text" name="email" class="form-control"
-                                    value="{{ $User->email }}" required>
+                                    value="{{ $member->email }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Role
+                                    Phone
                                 </label>
-                                <input type="text" name="role" class="form-control"
-                                    value="{{ $User->role }}" required>
+                                <input type="number" name="phone" class="form-control"
+                                    value="{{ $member->phone }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Role
+                                    Address
                                 </label>
-                                <input type="text" name="password" class="form-control"
-                                    value="{{ $User->password }}" required>
+                                <input type="text" name="address" class="form-control"
+                                    value="{{ $member->address }}" required>
                             </div>
 
                             <div class="text-end">
