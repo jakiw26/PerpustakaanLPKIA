@@ -16,17 +16,31 @@ class BorrowingsDetailsController extends Controller
 
     public function store(Request $request)
     {
+
+        $request->validate([
+            'borrowing_id' => 'required|integer',
+            'book_id' => 'required|integer',
+            'qty' => 'required|integer|min:1',
+        ]);
+
         BorrowingsDetails::create([
             'borrowing_id' => $request->borrowing_id,
             'book_id' => $request->book_id,
             'qty' => $request->qty,
         ]);
 
-        return redirect('/admin/borrowingsdetails');
+        return redirect('/admin/borrowingsdetails')->with('success', 'Data berhasil ditambahkan');
     }
 
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'borrowing_id' => 'required|integer',
+            'book_id' => 'required|integer',
+            'qty' => 'required|integer|min:1',
+        ]);
+
         $borrowing = BorrowingsDetails::find($id);
 
         $borrowing->update([
@@ -35,7 +49,7 @@ class BorrowingsDetailsController extends Controller
             'qty' => $request->qty,
         ]);
 
-        return redirect('/admin/borrowingsdetails');
+        return redirect('/admin/borrowingsdetails')->with('success', 'Data berhasil ditambahkan');
     }
 
     public function destroy($id)
@@ -43,6 +57,6 @@ class BorrowingsDetailsController extends Controller
         $borrowing = BorrowingsDetails::find($id);
         $borrowing->delete();
 
-        return redirect('/admin/borrowingsdetails');
+        return redirect('/admin/borrowingsdetails')->with('success', 'Data berhasil ditambahkan');
     }
-}   
+}

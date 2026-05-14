@@ -16,17 +16,29 @@ class ReturnsController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'borrowing_id' => 'required|integer',
+            'return_date' => 'required|date',
+            'late_days' => 'required|integer|min:0'
+        ]);
+
         Returns::create([
             'borrowing_id' => $request->borrowing_id,
             'return_date' => $request->return_date,
             'late_date' => $request->late_date
         ]);
 
-        return redirect('/admin/returns');
+        return redirect('/admin/returns')->with('success', 'Data berhasil ditambahkan');
     }
 
-    public function update (Request $request, $id)
+    public function update(Request $request, $id)
     {
+        $request->validate([
+            'borrowing_id' => 'required|integer',
+            'return_date' => 'required|date',
+            'late_days' => 'required|integer|min:0'
+        ]);
+
         $return = Returns::find($id);
 
         $return->update([
@@ -35,7 +47,7 @@ class ReturnsController extends Controller
             'late_days' => $request->late_days
         ]);
 
-        return redirect('/admin/returns');
+        return redirect('/admin/returns')->with('success', 'Data berhasil diupdate');;
     }
 
     public function destroy($id)
@@ -43,6 +55,6 @@ class ReturnsController extends Controller
         $return = Returns::find($id);
         $return->delete();
 
-        return redirect('/admin/returns');
+        return redirect('/admin/returns')->with('success', 'Data berhasil ditambahkan');
     }
 }
