@@ -27,7 +27,7 @@
                 <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/User">Users</a>
+                        <a class="nav-link" href="/admin/user">Users</a>
                     </li>
 
                     <li class="nav-item">
@@ -51,21 +51,16 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold" href="/admin/borrowings">
-                            Borrowings
-                        </a>
+                        <a class="nav-link" href="/admin/borrowings">Borrowings</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/borrowingsdetails">
-                            Borrowings Details
-                        </a>
+                        <a class="nav-link" href="/admin/borrowingsdetails">Borrowings Details</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/returns">Returns</a>
                     </li>
-
                 </ul>
             </div>
         </div>

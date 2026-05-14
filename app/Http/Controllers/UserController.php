@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index()
     {
         $Users = Users::all();
-        return view('admin.User', compact('Users'));
+        return view('admin.user.index', compact('Users'));
     }  
 
     public function store(Request $request)
@@ -23,7 +23,7 @@ class UserController extends Controller
             'password'=> $request->password
         ]);
 
-        return redirect('/User');
+        return redirect('/admin/user');
     }
     public function update(Request $request, $id)
     {
@@ -36,7 +36,7 @@ class UserController extends Controller
             'password'=> $request->password
         ]);
 
-        return redirect('/User');
+        return redirect('/admin/user');
     }
 
     public function delete($id)
@@ -44,6 +44,6 @@ class UserController extends Controller
         $User = Users::find($id);
         $User->delete();
 
-        return redirect('/User');
+        return redirect('/admin/user');
     }
 }

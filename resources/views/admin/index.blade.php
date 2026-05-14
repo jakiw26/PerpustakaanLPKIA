@@ -24,15 +24,15 @@
                     <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/User">Users</a>
+                            <a class="nav-link" href="/admin/user">Users</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/members">Members</a>
+                            <a class="nav-link" href="/admin/members">Members</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/books">Books</a>
+                            <a class="nav-link" href="/admin/books">Books</a>
                         </li>
 
                         <li class="nav-item">
@@ -44,7 +44,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="admin/publishers">Publishers</a>
+                            <a class="nav-link" href="/admin/publishers">Publishers</a>
                         </li>
 
                         <li class="nav-item">

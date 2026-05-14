@@ -11,15 +11,15 @@ class BooksController extends Controller
     public function index()
     {
         $books = Books::all();
-        return view('admin.books', compact('books'));
+        return view('admin.books.index', compact('books'));
     }  
 
     public function store(Request $request)
     { 
         Books::create([
-            'category_id' => $request->category,
-            'author_id' => $request->author,
-            'publisher_id' => $request->publisher,
+            'category_id' => $request->category_id,
+            'author_id' => $request->author_id,
+            'publisher_id' => $request->publisher_id,
             'title' => $request->title,
             'isbn'=> $request->isbn,
             'year'=> $request->year,
@@ -27,16 +27,16 @@ class BooksController extends Controller
             'description'=> $request->description
         ]);
 
-        return redirect('/books');
+        return redirect('/admin/books');
     }
     public function update(Request $request, $id)
     {
         $books = Books::find($id);
 
         $books->update([
-            'category_id' => $request->category,
-            'author_id' => $request->author,
-            'publisher_id' => $request->publisher,
+            'category_id' => $request->category_id,
+            'author_id' => $request->author_id,
+            'publisher_id' => $request->publisher_id,
             'title' => $request->title,
             'isbn'=> $request->isbn,
             'year'=> $request->year,
@@ -44,7 +44,7 @@ class BooksController extends Controller
             'description'=> $request->description
         ]);
 
-        return redirect('/books');
+        return redirect('/admin/books');
     }
 
     public function delete($id)
@@ -52,6 +52,6 @@ class BooksController extends Controller
         $books = Books::find($id);
         $books->delete();
 
-        return redirect('/books');
+        return redirect('/admin/books');
     }
 }

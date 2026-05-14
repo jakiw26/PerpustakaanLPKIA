@@ -27,45 +27,40 @@
                 <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/User">Users</a>
+                        <a class="nav-link" href="/admin/user">Users</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Members</a>
+                        <a class="nav-link" href="/admin/members">Members</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Books</a>
+                        <a class="nav-link" href="/admin/books">Books</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
+                        <a class="nav-link" href="/admin/categories">Categories</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Authors</a>
+                        <a class="nav-link" href="/admin/authors">Authors</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Publishers</a>
+                        <a class="nav-link" href="/admin/publishers">Publishers</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold" href="/admin/borrowings">
-                            Borrowings
-                        </a>
+                        <a class="nav-link" href="/admin/borrowings">Borrowings</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/borrowingsdetails">
-                            Borrowings Details
-                        </a>
+                        <a class="nav-link" href="/admin/borrowingsdetails">Borrowings Details</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/returns">Returns</a>
                     </li>
-
                 </ul>
             </div>
         </div>

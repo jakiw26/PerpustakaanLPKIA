@@ -40,19 +40,19 @@ Route::put('/returns/update/{id}', [ReturnsController::class, 'update']);
 Route::delete('/returns/delete/{id}', [ReturnsController::class, 'destroy']);
 
 //User
-Route::get('/User', [UserController::class, 'index']);
+Route::get('/admin/user', [UserController::class, 'index']);
 Route::post('/User/store', [UserController::class, 'store']);
 Route::put('/User/update/{id}', [UserController::class, 'update']);
 Route::delete('/User/delete/{id}', [UserController::class, 'delete']);
 
 //Members
-Route::get('/members', [MembersController::class, 'index']);
+Route::get('/admin/members', [MembersController::class, 'index']);
 Route::post('/members/store', [MembersController::class, 'store']);
 Route::put('/members/update/{id}', [MembersController::class, 'update']);
 Route::delete('/members/delete/{id}', [MembersController::class, 'delete']);
 
 //Books
-Route::get('/books', [BooksController::class, 'index']);
+Route::get('/admin/books', [BooksController::class, 'index']);
 Route::post('/books/store', [BooksController::class, 'store']);
 Route::put('/books/update/{id}', [BooksController::class, 'update']);
 Route::delete('/books/delete/{id}', [BooksController::class, 'delete']);

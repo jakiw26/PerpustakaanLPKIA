@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User</title>
+    <title>Members</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
@@ -27,43 +29,39 @@
                 <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
 
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold" href="/User">Users</a>
+                        <a class="nav-link" href="/admin/user">Users</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/members">Members</a>
+                        <a class="nav-link" href="/admin/members">Members</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/books">Books</a>
+                        <a class="nav-link" href="/admin/books">Books</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
+                        <a class="nav-link" href="/admin/categories">Categories</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Authors</a>
+                        <a class="nav-link" href="/admin/authors">Authors</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Publishers</a>
+                        <a class="nav-link" href="/admin/publishers">Publishers</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " href="/borrowings">
-                            Borrowings
-                        </a>
+                        <a class="nav-link" href="/admin/borrowings">Borrowings</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/borrowingsdetails">
-                            Borrowings Details
-                        </a>
+                        <a class="nav-link" href="/admin/borrowingsdetails">Borrowings Details</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/returns">Returns</a>
+                        <a class="nav-link" href="/admin/returns">Returns</a>
                     </li>
 
                 </ul>
@@ -75,9 +73,9 @@
         <div class="card border-0 shadow-lg rounded-4">
             <div class="card-header bg-primary text-white rounded-top-4 border-0 py-3">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0 fw-bold"> Data User </h3> <button
+                    <h3 class="mb-0 fw-bold"> Data Members </h3> <button
                         class="btn btn-light text-primary fw-semibold rounded-pill px-4" data-bs-toggle="modal"
-                        data-bs-target="#tambahBorrowingModal"> + Tambah Data </button>
+                        data-bs-target="#tambahmemberModal"> + Tambah Data </button>
                 </div>
             </div>
             <div class="card-body p-4">
@@ -87,28 +85,30 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
+                                <th>Nim</th>
                                 <th>Email</th>
-                                <th>Role</th>
-                                <th>Password</th>
+                                <th>Phone</th>
+                                <th>Address</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($Users as $User)
+                                @foreach ($members as $member)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $User->name }}</td>
-                                        <td>{{ $User->email }}</td>
-                                        <td>{{ $User->role }}</td>
-                                        <td>{{ $User->password }}</td>
+                                        <td>{{ $member->name }}</td>
+                                        <td>{{ $member->nim }}</td>
+                                        <td>{{ $member->email }}</td>
+                                        <td>{{ $member->phone }}</td>
+                                        <td>{{ $member->address }}</td>
 
                                         <td>
                                             <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editModal{{ $User->id }}">
+                                                data-bs-target="#editModal{{ $member->id }}">
                                                 Edit
                                             </button>
 
-                                            <form action="/User/delete/{{ $User->id }}" method="POST"
+                                            <form action="/members/delete/{{ $member->id }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -128,24 +128,32 @@
     </div>
 
     <!-- Modal Tambah Data -->
-    <div class="modal fade" id="tambahUsersModal" tabindex="-1">
+    <div class="modal fade" id="tambahmemberModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content border-0 rounded-4 shadow">
                 <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title fw-bold">
-                        Add User
+                        Add Members
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
 
                 <div class="modal-body p-4">
-                    <form action="/User/store" method="POST">
+                    <form action="/members/store" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
                                 Nama
                             </label>
                             <input type="text" name="name" class="form-control" placeholder="Masukkan Nama"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Nim
+                            </label>
+                            <input type="number" name="nim" class="form-control" placeholder="Masukkan Nama"
                                 required>
                         </div>
 
@@ -159,16 +167,18 @@
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Role
+                                Phone
                             </label>
-                            <input type="text" name="role" class="form-control" placeholder="Masukan Role" required>
+                            <input type="number" name="phone" class="form-control" placeholder="Masukan Phone"
+                                required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Password
+                                Address
                             </label>
-                            <input type="password" name="password" class="form-control" placeholder="Masukan Role" required>
+                            <input type="text" name="address" class="form-control" placeholder="Masukan Address"
+                                required>
                         </div>
 
                         <div class="text-end">
@@ -185,20 +195,20 @@
         </div>
     </div>
 
-    @foreach ($Users as $User)
-        <div class="modal fade" id="editModal{{ $User->id }}" tabindex="-1">
+    @foreach ($members as $member)
+        <div class="modal fade" id="editModal{{ $member->id }}" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 rounded-4 shadow">
                     <div class="modal-header bg-primary text-white">
                         <h5 class="modal-title fw-bold">
-                            Edit User
+                            Edit Members
                         </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal">
                         </button>
                     </div>
 
                     <div class="modal-body p-4">
-                        <form action="/User/update/{{ $User->id }}" method="POST">
+                        <form action="/members/update/{{ $member->id }}" method="POST">
                             @csrf
                             @method('PUT')
 
@@ -207,7 +217,15 @@
                                     Nama
                                 </label>
                                 <input type="text" name="name" class="form-control"
-                                    value="{{ $User->name }}" required>
+                                    value="{{ $member->name }}" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">
+                                    Nim
+                                </label>
+                                <input type="number" name="nim" class="form-control"
+                                    value="{{ $member->nim }}" required>
                             </div>
 
                             <div class="mb-3">
@@ -215,23 +233,23 @@
                                     Email
                                 </label>
                                 <input type="text" name="email" class="form-control"
-                                    value="{{ $User->email }}" required>
+                                    value="{{ $member->email }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Role
+                                    Phone
                                 </label>
-                                <input type="text" name="role" class="form-control"
-                                    value="{{ $User->role }}" required>
+                                <input type="number" name="phone" class="form-control"
+                                    value="{{ $member->phone }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Role
+                                    Address
                                 </label>
-                                <input type="text" name="password" class="form-control"
-                                    value="{{ $User->password }}" required>
+                                <input type="text" name="address" class="form-control"
+                                    value="{{ $member->address }}" required>
                             </div>
 
                             <div class="text-end">
@@ -260,4 +278,5 @@
 </html>
 
 </body>
+
 </html>

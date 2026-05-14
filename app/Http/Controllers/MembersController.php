@@ -11,7 +11,7 @@ class MembersController extends Controller
      public function index()
     {
         $members = members::all();
-        return view('admin.members', compact('members'));
+        return view('admin.member.index', compact('members'));
     }  
 
     public function store(Request $request)
@@ -24,7 +24,7 @@ class MembersController extends Controller
             'address'=> $request->address
         ]);
 
-        return redirect('/members');
+        return redirect('/admin/members');
     }
     public function update(Request $request, $id)
     {
@@ -38,7 +38,7 @@ class MembersController extends Controller
             'address'=> $request->address
         ]);
 
-        return redirect('/members');
+        return redirect('/admin/members');
     }
 
     public function delete($id)
@@ -46,6 +46,6 @@ class MembersController extends Controller
         $members = members::find($id);
         $members->delete();
 
-        return redirect('/members');
+        return redirect('/admin/members');
     }
 }

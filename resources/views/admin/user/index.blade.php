@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Books</title>
+    <title>User</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
@@ -27,45 +29,40 @@
                 <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
 
                     <li class="nav-item">
-                        <a class="nav-link " href="/User">Users</a>
+                        <a class="nav-link" href="/admin/user">Users</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " href="/members">Members</a>
+                        <a class="nav-link" href="/admin/members">Members</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold" href="/books">Books</a>
+                        <a class="nav-link" href="/admin/books">Books</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
+                        <a class="nav-link" href="/admin/categories">Categories</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Authors</a>
+                        <a class="nav-link" href="/admin/authors">Authors</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Publishers</a>
+                        <a class="nav-link" href="/admin/publishers">Publishers</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " href="/borrowings">
-                            Borrowings
-                        </a>
+                        <a class="nav-link" href="/admin/borrowings">Borrowings</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/borrowingsdetails">
-                            Borrowings Details
-                        </a>
+                        <a class="nav-link" href="/admin/borrowingsdetails">Borrowings Details</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/returns">Returns</a>
+                        <a class="nav-link" href="/admin/returns">Returns</a>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -77,7 +74,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h3 class="mb-0 fw-bold"> Data User </h3> <button
                         class="btn btn-light text-primary fw-semibold rounded-pill px-4" data-bs-toggle="modal"
-                        data-bs-target="#tambahBorrowingModal"> + Tambah Data </button>
+                        data-bs-target="#tambahuserModal"> + Tambah Data </button>
                 </div>
             </div>
             <div class="card-body p-4">
@@ -86,37 +83,29 @@
                         <table class="table table-striped">
                             <tr>
                                 <th>No</th>
-                                <th>Catagory</th>
-                                <th>Author</th>
-                                <th>Publisher</th>
-                                <th>Title</th>
-                                <th>Isbn</th>
-                                <th>Year</th>
-                                <th>Stock</th>
-                                <th>Description</th>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Password</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($books as $book)
+                                @foreach ($Users as $User)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $book->category_id }}</td>
-                                        <td>{{ $book->author_id }}</td>
-                                        <td>{{ $book->publisher_id }}</td>
-                                        <td>{{ $book->title }}</td>
-                                        <td>{{ $book->isbn }}</td>
-                                        <td>{{ $book->year }}</td>
-                                        <td>{{ $book->stock }}</td>
-                                        <td>{{ $book->description }}</td>
+                                        <td>{{ $User->name }}</td>
+                                        <td>{{ $User->email }}</td>
+                                        <td>{{ $User->role }}</td>
+                                        <td>{{ $User->password }}</td>
 
                                         <td>
                                             <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editModal{{ $book->id }}">
+                                                data-bs-target="#editModal{{ $User->id }}">
                                                 Edit
                                             </button>
 
-                                            <form action="/books/delete/{{ $book->id }}" method="POST"
+                                            <form action="/User/delete/{{ $User->id }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -136,7 +125,7 @@
     </div>
 
     <!-- Modal Tambah Data -->
-    <div class="modal fade" id="tambahBooksModal" tabindex="-1">
+    <div class="modal fade" id="tambahuserModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content border-0 rounded-4 shadow">
                 <div class="modal-header bg-primary text-white">
@@ -147,67 +136,39 @@
                 </div>
 
                 <div class="modal-body p-4">
-                    <form action="/books/store" method="POST">
+                    <form action="/User/store" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Category
+                                Nama
                             </label>
-                            <input type="number" name="category" class="form-control" placeholder="Masukkan Category"
+                            <input type="text" name="name" class="form-control" placeholder="Masukkan Nama"
                                 required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Author
+                                Email
                             </label>
-                            <input type="number" name="author" class="form-control" placeholder="Masukkan Author"
+                            <input type="text" name="email" class="form-control" placeholder="Masukkan Email"
                                 required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Publisher
+                                Role
                             </label>
-                            <input type="number" name="publisher" class="form-control" placeholder="Masukkan Publisher"
+                            <input type="text" name="role" class="form-control" placeholder="Masukan Role"
                                 required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Title
+                                Password
                             </label>
-                            <input type="text" name="title" class="form-control" placeholder="Masukan Title" required>
+                            <input type="password" name="password" class="form-control" placeholder="Masukan Role"
+                                required>
                         </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">
-                                Isbn
-                            </label>
-                            <input type="number" name="isbn" class="form-control" placeholder="Masukan Isbn" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">
-                                Tahun
-                            </label>
-                            <input type="year" name="year" class="form-control" placeholder="Masukan Tahun" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">
-                                Stock
-                            </label>
-                            <input type="number" name="stock" class="form-control" placeholder="Masukan Stock" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">
-                                Description
-                            </label>
-                            <input type="text" name="description" class="form-control" placeholder="Masukan Description Buku" required>
-                        </div>
-
 
                         <div class="text-end">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -223,8 +184,8 @@
         </div>
     </div>
 
-    @foreach ($books as $book)
-        <div class="modal fade" id="editModal{{ $book->id }}" tabindex="-1">
+    @foreach ($Users as $User)
+        <div class="modal fade" id="editModal{{ $User->id }}" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 rounded-4 shadow">
                     <div class="modal-header bg-primary text-white">
@@ -236,72 +197,40 @@
                     </div>
 
                     <div class="modal-body p-4">
-                        <form action="/books/update/{{ $book->id }}" method="POST">
+                        <form action="/User/update/{{ $User->id }}" method="POST">
                             @csrf
                             @method('PUT')
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Category
+                                    Nama
                                 </label>
-                                <input type="number" name="category" class="form-control"
-                                    value="{{ $book->category_id }}" required>
+                                <input type="text" name="name" class="form-control"
+                                    value="{{ $User->name }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Author
+                                    Email
                                 </label>
-                                <input type="number" name="author" class="form-control"
-                                    value="{{ $book->author_id }}" required>
+                                <input type="text" name="email" class="form-control"
+                                    value="{{ $User->email }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Publisher
+                                    Role
                                 </label>
-                                <input type="number" name="publisher" class="form-control"
-                                    value="{{ $book->publisher_id }}" required>
+                                <input type="text" name="role" class="form-control"
+                                    value="{{ $User->role }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Title
+                                    Password
                                 </label>
-                                <input type="text" name="title" class="form-control"
-                                    value="{{ $book->title }}" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">
-                                    Isbn
-                                </label>
-                                <input type="number" name="isbn" class="form-control"
-                                    value="{{ $book->isbn }}" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">
-                                    Tahun
-                                </label>
-                                <input type="year" name="year" class="form-control"
-                                    value="{{ $book->year }}" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">
-                                    Stock
-                                </label>
-                                <input type="number" name="stock" class="form-control"
-                                    value="{{ $book->stock }}" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">
-                                    Description
-                                </label>
-                                <input type="text" name="description" class="form-control"
-                                    value="{{ $book->description }}" required>
+                                <input type="text" name="password" class="form-control"
+                                    value="{{ $User->password }}" required>
                             </div>
 
                             <div class="text-end">
@@ -330,4 +259,5 @@
 </html>
 
 </body>
+
 </html>

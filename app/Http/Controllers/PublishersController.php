@@ -22,7 +22,7 @@ class PublishersController extends Controller
             'address' => $request->address
         ]);
 
-        return redirect('/admin/publishers');
+        return redirect('/admin/publishers')->with('success', 'Data berhasil ditambahkan');
     }
 
     public function update (Request $request, $id)
@@ -34,7 +34,7 @@ class PublishersController extends Controller
             'address' => $request->address
         ]);
 
-        return redirect('/admin/publishers');
+        return redirect('/admin/publishers')->with('success', 'Data berhasil diupdate');
     }
 
     public function destroy ($id)
@@ -42,6 +42,6 @@ class PublishersController extends Controller
         $publisher = Publishers::find($id);
         $publisher->delete();
 
-        return redirect('/admin/publishers');
+        return redirect('/admin/publishers')->with('success', 'Data berhasil dihapus');
     }
 }
