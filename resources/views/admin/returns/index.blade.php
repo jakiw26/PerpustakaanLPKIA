@@ -107,11 +107,11 @@
                                             </button>
 
                                             <form action="/returns/delete/{{ $return->id }}" method="POST"
-                                                class="d-inline">
+                                                class="d-inline delete-form">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('Yakin ingin menghapus data ini?')">
+
+                                                <button type="button" class="btn btn-danger btn-sm btn-delete">
                                                     Hapus
                                                 </button>
                                             </form>
@@ -143,16 +143,16 @@
                             <label class="form-label fw-semibold">
                                 Borrowing ID
                             </label>
-                            <input type="number" name="borrowing_id" class="form-control" placeholder="Masukkan Borrowing ID"
-                                required>
+                            <input type="number" name="borrowing_id" class="form-control"
+                                placeholder="Masukkan Borrowing ID" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                               Return Date
+                                Return Date
                             </label>
-                            <input type="date" name="return_date" class="form-control" placeholder="Masukkan return date"
-                                required>
+                            <input type="date" name="return_date" class="form-control"
+                                placeholder="Masukkan return date" required>
                         </div>
 
                         <div class="mb-3">
@@ -182,7 +182,7 @@
                 <div class="modal-content border-0 rounded-4 shadow">
                     <div class="modal-header bg-primary text-white">
                         <h5 class="modal-title fw-bold">
-                            Edit Borrowing Details
+                            Edit Returns
                         </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal">
                         </button>
@@ -238,6 +238,42 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: "{{ session('success') }}",
+                timer: 2000,
+                showConfirmButton: false
+            });
+        </script>
+    @endif
+
+    <script>
+        document.querySelectorAll('.btn-delete').forEach(button => {
+            button.addEventListener('click', function() {
+                let form = this.closest('form');
+
+                Swal.fire({
+                    title: "Yakin mau hapus?",
+                    text: "Data tidak bisa dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d33",
+                    cancelButtonColor: "#3085d6",
+                    confirmButtonText: "Ya, hapus!",
+                    cancelButtonText: "Batal"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

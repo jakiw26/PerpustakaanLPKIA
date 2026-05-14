@@ -17,6 +17,14 @@ class BorrowingsController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'member_id' => 'required|integer',
+            'user_id' => 'required|integer',
+            'borrow_date' => 'required|date',
+            'due_date' => 'required|date|after_or_equal:borrow_date',
+            'status' => 'required|string|max:50',
+        ]);
+
         Borrowings::create([
             'member_id' => $request->member_id,
             'user_id' => $request->user_id,
@@ -25,11 +33,20 @@ class BorrowingsController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect('/admin/borrowings');
-        }
+        return redirect('/admin/borrowings') ->with('success', 'Data berhasil ditambahkan');
+    }
 
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'member_id' => 'required|integer',
+            'user_id' => 'required|integer',
+            'borrow_date' => 'required|date',
+            'due_date' => 'required|date|after_or_equal:borrow_date',
+            'status' => 'required|string|max:50',
+        ]);
+
         $borrowing = Borrowings::find($id);
 
         $borrowing->update([
@@ -40,7 +57,7 @@ class BorrowingsController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect('/admin/borrowings');
+        return redirect('/admin/borrowings') ->with('success', 'Data berhasil diupdate');
     }
 
     public function destroy($id)
@@ -48,6 +65,6 @@ class BorrowingsController extends Controller
         $borrowing = Borrowings::find($id);
         $borrowing->delete();
 
-        return redirect('/admin/borrowings');
+        return redirect('/admin/borrowings')->with('success', 'Data berhasil dihapus');
     }
 }
