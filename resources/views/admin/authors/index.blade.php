@@ -31,23 +31,23 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Members</a>
+                        <a class="nav-link" href="/admin/members">Members</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Books</a>
+                        <a class="nav-link" href="/admin/books">Books</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
+                        <a class="nav-link" href="/admin/categories">Categories</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Authors</a>
+                        <a class="nav-link" href="/admin/authors">Authors</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Publishers</a>
+                        <a class="nav-link" href="/admin/publishers">Publishers</a>
                     </li>
 
                     <li class="nav-item">
@@ -75,7 +75,7 @@
         <div class="card border-0 shadow-lg rounded-4">
             <div class="card-header bg-primary text-white rounded-top-4 border-0 py-3">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0 fw-bold"> Data Categories </h3> <button
+                    <h3 class="mb-0 fw-bold"> Data Authors </h3> <button
                         class="btn btn-light text-primary fw-semibold rounded-pill px-4" data-bs-toggle="modal"
                         data-bs-target="#tambahReturnsModal"> + Tambah Data </button>
                 </div>
@@ -91,18 +91,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $category)
+                                @foreach ($authors as $author)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $author->name }}</td>
 
                                         <td>
-                                             <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editModal{{ $category->id }}">
+                                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#editModal{{ $author->id }}">
                                                 Edit
                                             </button> 
 
-                                            <form action="/categories/delete/{{ $category->id }}" method="POST"
+                                            <form action="/authors/delete/{{ $author->id }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -127,13 +127,13 @@
             <div class="modal-content border-0 rounded-4 shadow">
                 <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title fw-bold">
-                        Add Categories
+                        Add Authors
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
 
                 <div class="modal-body p-4">
-                    <form action="/categories/store" method="POST">
+                    <form action="/authors/store" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
@@ -157,8 +157,8 @@
         </div>
     </div>
 
-    @foreach ($categories as $category)
-        <div class="modal fade" id="editModal{{ $category->id }}" tabindex="-1">
+    @foreach ($authors as $author)
+        <div class="modal fade" id="editModal{{ $author->id }}" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 rounded-4 shadow">
                     <div class="modal-header bg-primary text-white">
@@ -170,7 +170,7 @@
                     </div>
 
                     <div class="modal-body p-4">
-                        <form action="/categories/update/{{ $category->id }}" method="POST">
+                        <form action="/authors/update/{{ $author->id }}" method="POST">
                             @csrf
                             @method('PUT')
 
@@ -179,7 +179,7 @@
                                     Name
                                 </label>
                                 <input type="teks" name="name" class="form-control"
-                                    value="{{ $category->name }}" required>
+                                    value="{{ $author->name }}" required>
                             </div>
 
                             <div class="text-end">

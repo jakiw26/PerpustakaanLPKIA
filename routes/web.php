@@ -7,6 +7,8 @@ use App\Http\Controllers\BorrowingsDetailsController;
 use App\Http\Controllers\ReturnsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\AuthorsController;
+use App\Models\Authors; 
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -46,3 +48,9 @@ Route::get('/admin/categories', [CategoriesController::class, 'index']);
 Route::post('/categories/store', [CategoriesController::class, 'store']);
 Route::put('/categories/update/{id}', [CategoriesController::class, 'update']);
 Route::delete('/categories/delete/{id}', [CategoriesController::class, 'destroy']);
+
+//authors
+Route::get('/admin/authors', [AuthorsController::class, 'index']);
+Route::post('/authors/store', [AuthorsController::class, 'store']);
+Route::put('/authors/update/{id}', [AuthorsController::class, 'update']);
+Route::delete('/authors/delete/{id}', [AuthorsController::class, 'destroy']);

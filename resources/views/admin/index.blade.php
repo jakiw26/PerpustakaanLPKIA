@@ -40,11 +40,11 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Authors</a>
+                            <a class="nav-link" href="/admin/authors">Authors</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Publishers</a>
+                            <a class="nav-link" href="admin/publishers">Publishers</a>
                         </li>
 
                         <li class="nav-item">
