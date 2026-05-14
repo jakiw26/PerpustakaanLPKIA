@@ -11,7 +11,7 @@ class ReturnsController extends Controller
     public function index()
     {
         $returns = Returns::all();
-        return view('admin.returns', compact('returns'));
+        return view('admin.returns.index', compact('returns'));
     }
 
     public function store(Request $request)
@@ -22,7 +22,7 @@ class ReturnsController extends Controller
             'late_date' => $request->late_date
         ]);
 
-        return redirect('/returns');
+        return redirect('/admin/returns');
     }
 
     public function update (Request $request, $id)
@@ -35,7 +35,7 @@ class ReturnsController extends Controller
             'late_days' => $request->late_days
         ]);
 
-        return redirect('/returns');
+        return redirect('/admin/returns');
     }
 
     public function destroy($id)
@@ -43,6 +43,6 @@ class ReturnsController extends Controller
         $return = Returns::find($id);
         $return->delete();
 
-        return redirect('/returns');
+        return redirect('/admin/returns');
     }
 }

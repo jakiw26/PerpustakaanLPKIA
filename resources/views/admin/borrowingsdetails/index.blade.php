@@ -51,21 +51,20 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold" href="/borrowings">
+                        <a class="nav-link active fw-bold" href="/admin/borrowings">
                             Borrowings
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/borrowingsdetails">
+                        <a class="nav-link" href="/admin/borrowingsdetails">
                             Borrowings Details
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/returns">Returns</a>
+                        <a class="nav-link" href="/admin/returns">Returns</a>
                     </li>
-
                 </ul>
             </div>
         </div>
