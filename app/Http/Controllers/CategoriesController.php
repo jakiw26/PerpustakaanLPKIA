@@ -18,7 +18,7 @@ class CategoriesController extends Controller
     {
         Categories::create([
             'name' => $request->name
-        ]);
+        ]); 
 
         return redirect('/admin/categories');
     }

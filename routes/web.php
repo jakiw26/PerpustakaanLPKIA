@@ -8,6 +8,8 @@ use App\Http\Controllers\ReturnsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\AuthorsController;
+use App\Http\Controllers\PublishersController;
+
 use App\Models\Authors; 
 
 // Route::get('/', function () {
@@ -54,3 +56,9 @@ Route::get('/admin/authors', [AuthorsController::class, 'index']);
 Route::post('/authors/store', [AuthorsController::class, 'store']);
 Route::put('/authors/update/{id}', [AuthorsController::class, 'update']);
 Route::delete('/authors/delete/{id}', [AuthorsController::class, 'destroy']);
+
+//publishers
+Route::get('/admin/publishers', [PublishersController::class, 'index']);
+Route::post('/publishers/store', [PublishersController::class, 'store']);
+Route::put('/publishers/update/{id}', [PublishersController::class, 'update']);
+Route::delete('/publishers/delete/{id}', [PublishersController::class, 'destroy']);
