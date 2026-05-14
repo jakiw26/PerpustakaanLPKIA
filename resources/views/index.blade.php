@@ -235,7 +235,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div>  
     </section>
 
     <!-- Tentang -->

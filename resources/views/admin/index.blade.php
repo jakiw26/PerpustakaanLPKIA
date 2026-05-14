@@ -36,27 +36,27 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Categories</a>
+                            <a class="nav-link" href="/admin/categories">Categories</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Authors</a>
+                            <a class="nav-link" href="/admin/authors">Authors</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Publishers</a>
+                            <a class="nav-link" href="admin/publishers">Publishers</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/borrowings">Borrowings</a>
+                            <a class="nav-link" href="/admin/borrowings">Borrowings</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/borrowingsdetails">Borrowings Details</a>
+                            <a class="nav-link" href="/admin/borrowingsdetails">Borrowings Details</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/returns">Returns</a>
+                            <a class="nav-link" href="/admin/returns">Returns</a>
                         </li>
 
                     </ul>

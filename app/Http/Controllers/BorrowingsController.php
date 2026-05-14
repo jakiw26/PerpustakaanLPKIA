@@ -12,7 +12,7 @@ class BorrowingsController extends Controller
     {
         $borrowings = Borrowings::all();
 
-        return view('admin.borrowings', compact('borrowings'));
+        return view('admin.borrowings.index', compact('borrowings'));
     }
 
     public function store(Request $request)
@@ -25,8 +25,8 @@ class BorrowingsController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect('/borrowings');
-    }
+        return redirect('/admin/borrowings');
+        }
 
     public function update(Request $request, $id)
     {
@@ -40,7 +40,7 @@ class BorrowingsController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect('/borrowings');
+        return redirect('/admin/borrowings');
     }
 
     public function destroy($id)
@@ -48,6 +48,6 @@ class BorrowingsController extends Controller
         $borrowing = Borrowings::find($id);
         $borrowing->delete();
 
-        return redirect('/borrowings');
+        return redirect('/admin/borrowings');
     }
 }
