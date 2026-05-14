@@ -31,23 +31,23 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Members</a>
+                        <a class="nav-link" href="/members">Members</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Books</a>
+                        <a class="nav-link" href="/books">Books</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Categories</a>
+                        <a class="nav-link" href="/admin/categories">Categories</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Authors</a>
+                        <a class="nav-link" href="/admin/authors">Authors</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Publishers</a>
+                        <a class="nav-link" href="/admin/publishers">Publishers</a>
                     </li>
 
                     <li class="nav-item">
