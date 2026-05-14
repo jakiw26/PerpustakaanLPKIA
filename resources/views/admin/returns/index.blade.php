@@ -8,58 +8,58 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
         <div class="container">
-
-            <a class="navbar-brand fw-bold" href="/admin">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="/admin">
+                <img src="https://e-sertifikat.lpkia.ac.id/img/logo_IDE_transparan.png" alt="Logo LPKIA" width="45"
+                    height="45" class="me-2 rounded-circle shadow-sm">
                 Perpustakaan LPKIA
             </a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
+                <ul class="navbar-nav gap-2">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/user">Users</a>
+                        <a class="nav-link {{ Request::is('admin/user') ? 'active fw-bold' : '' }}" href="/admin/user">Users</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/members">Members</a>
+                        <a class="nav-link {{ Request::is('admin/members') ? 'active fw-bold' : '' }}" href="/admin/members">Members</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/books">Books</a>
+                        <a class="nav-link {{ Request::is('admin/books') ? 'active fw-bold' : '' }}" href="/admin/books">Books</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/categories">Categories</a>
+                        <a class="nav-link {{ Request::is('admin/categories') ? 'active fw-bold' : '' }}" href="/admin/categories">Categories</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/authors">Authors</a>
+                        <a class="nav-link {{ Request::is('admin/authors') ? 'active fw-bold' : '' }}" href="/admin/authors">Authors</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/publishers">Publishers</a>
+                        <a class="nav-link {{ Request::is('admin/publishers') ? 'active fw-bold' : '' }}" href="/admin/publishers">Publishers</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/borrowings">Borrowings</a>
+                        <a class="nav-link {{ Request::is('admin/borrowings') ? 'active fw-bold' : '' }}" href="/admin/borrowings">Borrowings</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/borrowingsdetails">Borrowings Details</a>
+                        <a class="nav-link {{ Request::is('admin/borrowingsdetails') ? 'active fw-bold' : '' }}" href="/admin/borrowingsdetails">Borrowings Details</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/returns">Returns</a>
+                        <a class="nav-link {{ Request::is('admin/returns') ? 'active fw-bold' : '' }}" href="/admin/returns">Returns</a>
                     </li>
 
                 </ul>
@@ -99,7 +99,7 @@
                                         <td>
                                             <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                                 data-bs-target="#editModal{{ $return->id }}">
-                                                Edit
+                                                <i class="bi bi-pencil-square"></i> Edit
                                             </button>
 
                                             <form action="/returns/delete/{{ $return->id }}" method="POST"
@@ -108,7 +108,7 @@
                                                 @method('DELETE')
 
                                                 <button type="button" class="btn btn-danger btn-sm btn-delete">
-                                                    Hapus
+                                                    <i class="bi bi-trash3"></i> Hapus
                                                 </button>
                                             </form>
                                         </td>

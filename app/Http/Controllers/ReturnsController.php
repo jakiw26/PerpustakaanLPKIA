@@ -25,7 +25,7 @@ class ReturnsController extends Controller
         Returns::create([
             'borrowing_id' => $request->borrowing_id,
             'return_date' => $request->return_date,
-            'late_date' => $request->late_date
+            'late_days' => $request->late_days
         ]);
 
         return redirect('/admin/returns')->with('success', 'Data berhasil ditambahkan');

@@ -24,7 +24,7 @@ class MembersController extends Controller
             'address'=> $request->address
         ]);
 
-        return redirect('/admin/members');
+        return redirect('/admin/members')->with('success', 'Data berhasil ditambahkan');
     }
     public function update(Request $request, $id)
     {
@@ -38,7 +38,7 @@ class MembersController extends Controller
             'address'=> $request->address
         ]);
 
-        return redirect('/admin/members');
+        return redirect('/admin/members')->with('success', 'Data berhasil diupdate');
     }
 
     public function delete($id)
@@ -46,6 +46,6 @@ class MembersController extends Controller
         $members = members::find($id);
         $members->delete();
 
-        return redirect('/admin/members');
+        return redirect('/admin/members')->with('success', 'Data berhasil dihapus');
     }
 }

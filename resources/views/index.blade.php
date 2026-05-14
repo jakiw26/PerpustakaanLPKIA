@@ -181,7 +181,6 @@
                 <!-- Logo -->
                 <img src="https://e-sertifikat.lpkia.ac.id/img/logo_IDE_transparan.png" alt="Logo LPKIA" width="45"
                     height="45" class="me-2 rounded-circle shadow-sm" />
-
                 Perpustakaan LPKIA
             </a>
 

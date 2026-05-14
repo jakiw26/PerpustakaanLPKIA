@@ -23,7 +23,7 @@ class UserController extends Controller
             'password'=> $request->password
         ]);
 
-        return redirect('/admin/user');
+        return redirect('/admin/user')->with('success', 'Data berhasil ditambahkan');
     }
     public function update(Request $request, $id)
     {
@@ -36,7 +36,7 @@ class UserController extends Controller
             'password'=> $request->password
         ]);
 
-        return redirect('/admin/user');
+        return redirect('/admin/user')->with('success', 'Data berhasil diupdate');
     }
 
     public function delete($id)
@@ -44,6 +44,6 @@ class UserController extends Controller
         $User = Users::find($id);
         $User->delete();
 
-        return redirect('/admin/user');
+        return redirect('/admin/user')->with('success', 'Data berhasil dihapus');
     }
 }

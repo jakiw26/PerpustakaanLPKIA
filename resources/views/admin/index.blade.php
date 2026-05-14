@@ -10,21 +10,22 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
             <div class="container">
-                <a class="navbar-brand fw-bold" href="#">
+                <a class="navbar-brand fw-bold d-flex align-items-center" href="/admin">
+                    <img src="https://e-sertifikat.lpkia.ac.id/img/logo_IDE_transparan.png" alt="Logo LPKIA"
+                        width="45" height="45" class="me-2 rounded-circle shadow-sm">
                     Perpustakaan LPKIA
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-                    <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
+                    <ul class="navbar-nav gap-2">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/user">Users</a>
+                           <a class="nav-link {{ Request::is('admin/user') ? 'active fw-bold' : '' }}" href="/admin/user">Users</a>
                         </li>
 
                         <li class="nav-item">
@@ -61,7 +62,6 @@
 
                     </ul>
                 </div>
-
             </div>
         </nav>
         <div class="container mt-4">
