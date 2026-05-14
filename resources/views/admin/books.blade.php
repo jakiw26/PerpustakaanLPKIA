@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Members</title>
+    <title>Books</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -31,11 +31,11 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold" href="/members">Members</a>
+                        <a class="nav-link " href="/members">Members</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Books</a>
+                        <a class="nav-link active fw-bold" href="/books">Books</a>
                     </li>
 
                     <li class="nav-item">
@@ -86,31 +86,37 @@
                         <table class="table table-striped">
                             <tr>
                                 <th>No</th>
-                                <th>Nama</th>
-                                <th>Nim</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Address</th>
+                                <th>Catagory</th>
+                                <th>Author</th>
+                                <th>Publisher</th>
+                                <th>Title</th>
+                                <th>Isbn</th>
+                                <th>Year</th>
+                                <th>Stock</th>
+                                <th>Description</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($members as $member)
+                                @foreach ($books as $book)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $member->name }}</td>
-                                        <td>{{ $member->nim }}</td>
-                                        <td>{{ $member->email }}</td>
-                                        <td>{{ $member->phone }}</td>
-                                        <td>{{ $member->address }}</td>
+                                        <td>{{ $book->category_id }}</td>
+                                        <td>{{ $book->author_id }}</td>
+                                        <td>{{ $book->publisher_id }}</td>
+                                        <td>{{ $book->title }}</td>
+                                        <td>{{ $book->isbn }}</td>
+                                        <td>{{ $book->year }}</td>
+                                        <td>{{ $book->stock }}</td>
+                                        <td>{{ $book->description }}</td>
 
                                         <td>
                                             <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#editModal{{ $member->id }}">
+                                                data-bs-target="#editModal{{ $book->id }}">
                                                 Edit
                                             </button>
 
-                                            <form action="/members/delete/{{ $member->id }}" method="POST"
+                                            <form action="/books/delete/{{ $book->id }}" method="POST"
                                                 class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -130,7 +136,7 @@
     </div>
 
     <!-- Modal Tambah Data -->
-    <div class="modal fade" id="tambahMembersModal" tabindex="-1">
+    <div class="modal fade" id="tambahBooksModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content border-0 rounded-4 shadow">
                 <div class="modal-header bg-primary text-white">
@@ -141,45 +147,67 @@
                 </div>
 
                 <div class="modal-body p-4">
-                    <form action="/members/store" method="POST">
+                    <form action="/books/store" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Nama
+                                Category
                             </label>
-                            <input type="text" name="name" class="form-control" placeholder="Masukkan Nama"
+                            <input type="number" name="category" class="form-control" placeholder="Masukkan Category"
                                 required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Nim
+                                Author
                             </label>
-                            <input type="number" name="nim" class="form-control" placeholder="Masukkan Nama"
+                            <input type="number" name="author" class="form-control" placeholder="Masukkan Author"
                                 required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Email
+                                Publisher
                             </label>
-                            <input type="text" name="email" class="form-control" placeholder="Masukkan Email"
+                            <input type="number" name="publisher" class="form-control" placeholder="Masukkan Publisher"
                                 required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Phone
+                                Title
                             </label>
-                            <input type="number" name="phone" class="form-control" placeholder="Masukan Phone" required>
+                            <input type="text" name="title" class="form-control" placeholder="Masukan Title" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold">
-                                Address
+                                Isbn
                             </label>
-                            <input type="text" name="address" class="form-control" placeholder="Masukan Address" required>
+                            <input type="number" name="isbn" class="form-control" placeholder="Masukan Isbn" required>
                         </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Tahun
+                            </label>
+                            <input type="year" name="year" class="form-control" placeholder="Masukan Tahun" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Stock
+                            </label>
+                            <input type="number" name="stock" class="form-control" placeholder="Masukan Stock" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Description
+                            </label>
+                            <input type="text" name="description" class="form-control" placeholder="Masukan Description Buku" required>
+                        </div>
+
 
                         <div class="text-end">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -195,8 +223,8 @@
         </div>
     </div>
 
-    @foreach ($members as $member)
-        <div class="modal fade" id="editModal{{ $member->id }}" tabindex="-1">
+    @foreach ($books as $book)
+        <div class="modal fade" id="editModal{{ $book->id }}" tabindex="-1">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content border-0 rounded-4 shadow">
                     <div class="modal-header bg-primary text-white">
@@ -208,48 +236,72 @@
                     </div>
 
                     <div class="modal-body p-4">
-                        <form action="/member/update/{{ $member->id }}" method="POST">
+                        <form action="/books/update/{{ $book->id }}" method="POST">
                             @csrf
                             @method('PUT')
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Nama
+                                    Category
                                 </label>
-                                <input type="text" name="name" class="form-control"
-                                    value="{{ $member->name }}" required>
+                                <input type="number" name="category" class="form-control"
+                                    value="{{ $book->category_id }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Nim
+                                    Author
                                 </label>
-                                <input type="number" name="nim" class="form-control"
-                                    value="{{ $member->nim }}" required>
+                                <input type="number" name="author" class="form-control"
+                                    value="{{ $book->author_id }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Email
+                                    Publisher
                                 </label>
-                                <input type="text" name="email" class="form-control"
-                                    value="{{ $member->email }}" required>
+                                <input type="number" name="publisher" class="form-control"
+                                    value="{{ $book->publisher_id }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Phone
+                                    Title
                                 </label>
-                                <input type="number" name="phone" class="form-control"
-                                    value="{{ $member->phone }}" required>
+                                <input type="text" name="title" class="form-control"
+                                    value="{{ $book->title }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">
-                                    Address
+                                    Isbn
                                 </label>
-                                <input type="text" name="address" class="form-control"
-                                    value="{{ $member->address }}" required>
+                                <input type="number" name="isbn" class="form-control"
+                                    value="{{ $book->isbn }}" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">
+                                    Tahun
+                                </label>
+                                <input type="year" name="year" class="form-control"
+                                    value="{{ $book->year }}" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">
+                                    Stock
+                                </label>
+                                <input type="number" name="stock" class="form-control"
+                                    value="{{ $book->stock }}" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">
+                                    Description
+                                </label>
+                                <input type="text" name="description" class="form-control"
+                                    value="{{ $book->description }}" required>
                             </div>
 
                             <div class="text-end">

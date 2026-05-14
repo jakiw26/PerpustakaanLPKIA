@@ -128,7 +128,7 @@
     </div>
 
     <!-- Modal Tambah Data -->
-    <div class="modal fade" id="tambahBorrowingModal" tabindex="-1">
+    <div class="modal fade" id="tambahUsersModal" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content border-0 rounded-4 shadow">
                 <div class="modal-header bg-primary text-white">

@@ -7,6 +7,7 @@ use App\Http\Controllers\BorrowingsDetailsController;
 use App\Http\Controllers\ReturnsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MembersController;
+use App\Http\Controllers\BooksController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\PublishersController;
@@ -43,6 +44,18 @@ Route::get('/User', [UserController::class, 'index']);
 Route::post('/User/store', [UserController::class, 'store']);
 Route::put('/User/update/{id}', [UserController::class, 'update']);
 Route::delete('/User/delete/{id}', [UserController::class, 'delete']);
+
+//Members
+Route::get('/members', [MembersController::class, 'index']);
+Route::post('/members/store', [MembersController::class, 'store']);
+Route::put('/members/update/{id}', [MembersController::class, 'update']);
+Route::delete('/members/delete/{id}', [MembersController::class, 'delete']);
+
+//Books
+Route::get('/books', [BooksController::class, 'index']);
+Route::post('/books/store', [BooksController::class, 'store']);
+Route::put('/books/update/{id}', [BooksController::class, 'update']);
+Route::delete('/books/delete/{id}', [BooksController::class, 'delete']);
 
 //categories
 Route::get('/admin/categories', [CategoriesController::class, 'index']);
